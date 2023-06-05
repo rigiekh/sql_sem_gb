@@ -24,15 +24,15 @@ VALUES
 
 /*
 2.  Для данных таблицы “sales” укажите тип заказа в зависимости от кол-ва : 
-меньше 100  -    Маленький заказ
+меньше 100 - Маленький заказ
 от 100 до 300 - Средний заказ
-больше 300  -     Большой заказ
+больше 300 - Большой заказ
 */
 
 SELECT 
 	id,
     CASE
-		WHEN count_product < 100 THEN "Маленький заказ"
+	WHEN count_product < 100 THEN "Маленький заказ"
         WHEN count_product BETWEEN 100 AND 300 THEN "Средний заказ"
         ELSE "Большой заказ"
     END AS "Тип заказа"
@@ -42,10 +42,10 @@ FROM sales;
 
 CREATE TABLE IF NOT EXISTS orders
 (
-	id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     employee_id VARCHAR(20),
     amount FLOAT DEFAULT 0.0,
-	order_status VARCHAR(20)
+    order_status VARCHAR(20)
 );
 
 INSERT INTO orders (employee_id, amount, order_status)
@@ -58,11 +58,11 @@ VALUES
 
 SELECT
 	id,
-    employee_id,
-    amount,
-    order_status,
+        employee_id,
+        amount,
+        order_status,
 	CASE
-		WHEN order_status = "OPEN" THEN "Order is in open state"
+	WHEN order_status = "OPEN" THEN "Order is in open state"
         WHEN order_status = "CLOSED" THEN "Order is closed"
         WHEN order_status = "CANCELLED" THEN "Order is cancelled"
         ELSE ""
